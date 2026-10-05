@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Consulta el clima actual de cualquier ciudad."
+    />
+    <title>Clima — Tu tiempo, de un vistazo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="weather-app">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Clima, inicio">
+          <span class="brand-mark" aria-hidden="true">✳</span>
+          <span>clima<span class="brand-dot">.</span></span>
+        </a>
+        <span class="topbar-note">EL TIEMPO, EN UN SOLO LUGAR</span>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow"><span class="eyebrow-line"></span> PRONÓSTICO ACTUAL</p>
+        <h1 id="page-title">El clima de tu <span>ciudad.</span></h1>
+        <p class="intro-copy">
+          Busca un lugar y descubre qué está pasando ahí fuera.
+        </p>
+
+        <form class="search-form" id="search-form" role="search">
+          <label class="sr-only" for="city-input">Nombre de la ciudad</label>
+          <span class="search-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle cx="10.8" cy="10.8" r="6.8"></circle>
+              <path d="m16 16 4.5 4.5"></path>
+            </svg>
+          </span>
+          <input
+            id="city-input"
+            name="city"
+            type="search"
+            placeholder="Busca una ciudad..."
+            autocomplete="off"
+            required
+          />
+          <button class="search-button" type="submit">
+            <span>Buscar</span>
+            <span aria-hidden="true">↗</span>
+          </button>
+        </form>
+        <p class="search-hint">Por ejemplo: Madrid, Ciudad de México, Buenos Aires</p>
+      </section>
+
+      <section
+        class="weather-card is-empty"
+        id="weather-card"
+        aria-live="polite"
+        aria-busy="false"
+        aria-label="Clima actual"
+      >
+        <div class="empty-state" id="empty-state">
+          <div class="empty-icon" aria-hidden="true">☀</div>
+          <p>Tu próximo destino empieza aquí.</p>
+          <span>Busca una ciudad para ver su clima actual.</span>
+        </div>
+
+        <div class="weather-content" id="weather-content" hidden>
+          <div class="weather-heading">
+            <div>
+              <p class="weather-kicker">AHORA MISMO</p>
+              <h2 id="location-name">—</h2>
+              <p class="weather-date" id="weather-date"></p>
+            </div>
+            <div class="weather-symbol" id="weather-symbol" aria-hidden="true">☀️</div>
+          </div>
+
+          <div class="temperature-row">
+            <p class="temperature"><span id="temperature">—</span><span class="degree">°</span></p>
+            <div class="condition">
+              <p id="weather-description">—</p>
+              <span>Sensación de <span id="feels-like">—</span>°</span>
+            </div>
+          </div>
+
+          <div class="weather-divider"></div>
+
+          <div class="details-grid">
+            <div class="detail">
+              <span class="detail-icon humidity-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3.5S5.5 10.1 5.5 14.2a6.5 6.5 0 0 0 13 0C18.5 10.1 12 3.5 12 3.5Z"></path>
+                  <path d="M9.2 15.1a3 3 0 0 0 3 3"></path>
+                </svg>
+              </span>
+              <div>
+                <span class="detail-label">Humedad</span>
+                <strong><span id="humidity">—</span><small>%</small></strong>
+              </div>
+            </div>
+            <div class="detail">
+              <span class="detail-icon wind-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M3 8h12a2.5 2.5 0 1 0-2.5-2.5"></path>
+                  <path d="M2 12h17a2.5 2.5 0 1 1-2.5 2.5"></path>
+                  <path d="M4 16h7a2 2 0 1 1-2 2"></path>
+                </svg>
+              </span>
+              <div>
+                <span class="detail-label">Viento</span>
+                <strong><span id="wind-speed">—</span><small> km/h</small></strong>
+              </div>
+            </div>
+            <div class="detail">
+              <span class="detail-icon daylight-icon" aria-hidden="true">◷</span>
+              <div>
+                <span class="detail-label">Luz del día</span>
+                <strong id="daylight">—</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="status-message" id="status-message" role="status"></p>
+      </section>
+
+      <footer class="footer">
+        <span>Datos meteorológicos de <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a></span>
+        <span class="footer-note"><span class="live-dot"></span> ACTUALIZADO EN TIEMPO REAL</span>
+      </footer>
+    </main>
+  </body>
+</html>
